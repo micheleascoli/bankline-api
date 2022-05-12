@@ -49,6 +49,7 @@ public class MovimentacaoService {
 		 * Antes de salvar a movimentação é necessário verificar a conta do correntista  e atualizá-la
 		 */
 		Correntista correntista = correntistaRepository.findById(novaMovimentacao.getIdConta()).orElse(null);
+		
 		if(correntista != null) {
 			correntista.getConta().setSaldo(correntista.getConta().getSaldo() + valor);
 			correntistaRepository.save(correntista);
