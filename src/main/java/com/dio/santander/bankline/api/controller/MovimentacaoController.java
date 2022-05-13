@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +33,10 @@ public class MovimentacaoController {
 		return repository.findAll();
 	}
 	
+	@GetMapping("/{idConta}")
+	public List<Movimentacao> findAll(@PathVariable("idConta") Integer idConta){
+		return repository.findByIdConta(idConta);
+	}
 	/*
 	 * Para criar um correntista por padrão só devemos precisar do nome e cpf do usuário,
 	 * dessa forma a aplicação vai precisar gerar as outras informações da conta.
